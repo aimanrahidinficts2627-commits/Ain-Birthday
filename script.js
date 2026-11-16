@@ -146,7 +146,7 @@ const memories = [
   },
   {
     image: "Images/memory10.jpeg",
-    title: "Yeayy Hantar Fara ♡",
+    title: "Yeayy Hantar Ain ♡",
     date: "7 November 2026",
     description: "Saya selalu bercampur aduk ngan harini, saya happy sebab kita gi Taman tapi rasa bersalah sebab awak sakit hrmm, tapi still akhirnya dapat hantar Ainnnn HEHE."
   },
