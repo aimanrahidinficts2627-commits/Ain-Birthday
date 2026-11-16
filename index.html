@@ -186,6 +186,24 @@
     <button type="button" id="storyBackButton" onclick="storyGoBack()">← Previous Page</button>
     <button type="button" onclick="storyBackToStart()">↻ Back to Start ♡</button>
   </nav>
+  <style>
+    #storyNavigation[hidden], #storyBackButton[hidden], #storyEndingActions[hidden] { display: none !important; }
+    #storyNavigation:not([hidden]) {
+      position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+      z-index: 9999; display: flex; gap: 9px; align-items: center;
+      justify-content: center; width: max-content; max-width: calc(100% - 24px);
+      padding: 9px; border-radius: 24px; background: rgba(255,248,252,.96);
+      box-shadow: 0 5px 25px rgba(132,43,89,.22);
+    }
+    #storyNavigation button, #storyEndingActions button {
+      border: 0; border-radius: 18px; background: #ed77a9; color: #fff;
+      font: 600 13px 'Quicksand', sans-serif; padding: 12px 14px; cursor: pointer;
+    }
+    #storyNavigation button:active, #storyEndingActions button:active { transform: scale(.97); }
+    body.story-unlocked { padding-bottom: 90px; }
+    #storyEndingActions:not([hidden]) { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+    @media (max-width: 380px) { #storyNavigation button { font-size: 11px; padding: 10px; } }
+  </style>
   <script src="script.js"></script>
 </body>
 </html>
