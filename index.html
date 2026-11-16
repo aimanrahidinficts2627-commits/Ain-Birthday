@@ -8,16 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .story-navigation[hidden], .story-ending-actions[hidden] { display: none !important; }
-    .story-navigation { position: fixed; z-index: 900; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 9px; justify-content: center; align-items: center; width: max-content; max-width: calc(100vw - 24px); padding: 9px 11px; border: 1px solid #f5c4d8; border-radius: 22px; background: rgba(255,250,253,.96); box-shadow: 0 6px 24px rgba(177,76,116,.16); }
-    .story-navigation button, .story-ending-actions button { cursor: pointer; background: #f7a8c8; color: #6e2948; border: 0; border-radius: 22px; padding: 10px 13px; font: 600 12px Quicksand, sans-serif; }
-    .story-navigation button:hover, .story-ending-actions button:hover { background: #f48eb7; }
-    .story-navigation button[hidden] { display: none !important; }
-    .story-ending-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 20px auto 32px; }
-    body.story-unlocked { padding-bottom: 76px; }
-    @media (max-width: 380px) { .story-navigation button { font-size: 11px; padding: 9px; } }
-  </style>
 </head>
 <body>
   <audio id="backgroundMusic" loop preload="auto"><source src="music/birthday.mp3" type="audio/mpeg"></audio>
@@ -172,38 +162,11 @@
         </video>
       </div>
       <p id="videoEnding" class="finale-video-ending" hidden>And I’ll keep choosing you, every single day. ♡</p>
-      <div id="storyEndingActions" class="story-ending-actions" hidden>
-        <button type="button" onclick="storyGoBack()">← Previous Page</button>
-        <button type="button" onclick="storyBackToStart()">Relive Our Story ♡</button>
-      </div>
       <p class="finale-small">Made just for you, with love. ♡</p>
     </div>
   </div>
 </div>
   </section>
-  <!-- Navigation: available after unlocking the surprise -->
-  <nav id="storyNavigation" class="story-navigation" aria-label="Story navigation" hidden>
-    <button type="button" id="storyBackButton" onclick="storyGoBack()">← Previous Page</button>
-    <button type="button" onclick="storyBackToStart()">↻ Back to Start ♡</button>
-  </nav>
-  <style>
-    #storyNavigation[hidden], #storyBackButton[hidden], #storyEndingActions[hidden] { display: none !important; }
-    #storyNavigation:not([hidden]) {
-      position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
-      z-index: 9999; display: flex; gap: 9px; align-items: center;
-      justify-content: center; width: max-content; max-width: calc(100% - 24px);
-      padding: 9px; border-radius: 24px; background: rgba(255,248,252,.96);
-      box-shadow: 0 5px 25px rgba(132,43,89,.22);
-    }
-    #storyNavigation button, #storyEndingActions button {
-      border: 0; border-radius: 18px; background: #ed77a9; color: #fff;
-      font: 600 13px 'Quicksand', sans-serif; padding: 12px 14px; cursor: pointer;
-    }
-    #storyNavigation button:active, #storyEndingActions button:active { transform: scale(.97); }
-    body.story-unlocked { padding-bottom: 90px; }
-    #storyEndingActions:not([hidden]) { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
-    @media (max-width: 380px) { #storyNavigation button { font-size: 11px; padding: 10px; } }
-  </style>
   <script src="script.js"></script>
 </body>
 </html>
