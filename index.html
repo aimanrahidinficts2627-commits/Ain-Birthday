@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Fara 💗</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio id="backgroundMusic" loop preload="auto"><source src="music/birthday.mp3" type="audio/mpeg"></audio>
+  <button id="musicButton" class="music-button" onclick="toggleMusic()" aria-label="Play or pause background music">🔇</button>
+  <!-- PAGE 0: SECRET CODE -->
+  <section id="lockPage" class="lock-page">
+    <div class="lock-card">
+      <div class="lock-flower">🌸</div>
+      <h1>For You, My Love</h1>
+      <p>Enter our secret code</p>
+      <div id="pinDots" class="pin-dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="pin-keypad">
+        <button type="button" onclick="pressPin('1')">1</button><button type="button" onclick="pressPin('2')">2</button><button type="button" onclick="pressPin('3')">3</button>
+        <button type="button" onclick="pressPin('4')">4</button><button type="button" onclick="pressPin('5')">5</button><button type="button" onclick="pressPin('6')">6</button>
+        <button type="button" onclick="pressPin('7')">7</button><button type="button" onclick="pressPin('8')">8</button><button type="button" onclick="pressPin('9')">9</button>
+        <button type="button" onclick="clearPin()">×</button><button type="button" onclick="pressPin('0')">0</button><button type="button" onclick="deletePin()">⌫</button>
+      </div>
+      <p id="pinMessage" class="pin-message" aria-live="polite"></p>
+      <p class="pin-hint">Hint: The day our first conversation began... 💕</p>
+    </div>
+  </section>
+  <!-- PAGE 1: WELCOME -->
+  <main class="welcome" id="welcomePage" hidden>
+    <div class="heart">💗</div>
+    <h1>Hey, Fara! 🎀</h1>
+    <p>I made something special just for you...</p>
+    <button id="surpriseButton" onclick="showSurprise()">Open Your Surprise 💌</button>
+    <div id="message" hidden><h2>Happy Birthday, Fara! 🎂💕</h2><p>Are you ready for your next surprise?</p><button onclick="nextPage()">Next Surprise 🎁</button></div>
+  </main>
+  <!-- PAGE 2: BIRTHDAY CAKE -->
+  <section class="cake-page" id="cakePage" hidden>
+    <h1>Make a Wish, Fara! 🎂</h1><p>Tap all 5 candles to blow them out!</p>
+    <div class="cake">
+      <div class="candles">
+        <div class="candle" onclick="blowCandle(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blowCandle(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blowCandle(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blowCandle(this)"><div class="flame"></div></div>
+        <div class="candle" onclick="blowCandle(this)"><div class="flame"></div></div>
+      </div>
+      <div class="cake-top"></div><div class="cake-bottom"></div><div class="cake-plate"></div>
+    </div>
+    <div id="wishMessage" hidden><h2>YAYYY! Happy Birthday, Sayang! 💗</h2><p>There's still something special waiting for you...</p><button onclick="goToMemories()">Next Surprise 💌</button></div>
+  </section>
+  <!-- PAGE 3: OUR MEMORIES -->
+  <section id="memoriesPage" class="memories-page" hidden>
+    <h1>Our Memories 💗</h1><p>Every picture holds a little piece of our story. 💗</p>
+    <div class="memory-gallery"><button class="gallery-arrow" onclick="previousMemory()">❮</button><div id="polaroidContainer" class="polaroid-container"></div><button class="gallery-arrow" onclick="nextMemory()">❯</button></div>
+    <div id="memoryDots" class="memory-dots"></div>
+    <p class="memory-footer">Every moment with you is my favourite. ♡</p>
+    <button onclick="goToBouquet()">A Little Gift For You 💐</button>
+  </section>
+  <!-- POPUP WHEN PHOTO IS CLICKED -->
+  <div id="memoryPopup" class="memory-popup" hidden>
+    <div class="popup-card"><button class="close-popup" onclick="closeMemory()">×</button>
+      <div class="popup-photo-frame"><img id="popupImage" alt="Our memory"></div>
+      <div class="popup-decoration">♡ ✦ ♡</div><h2 id="popupTitle"></h2><p id="popupDate" class="popup-date"></p><p id="popupDescription"></p>
+      <div class="popup-ending">A little piece of our story 💗</div>
+    </div>
+  </div>
+  <!-- PAGE 4: BUILD YOUR BOUQUET -->
+  <section id="bouquetPage" class="bouquet-page" hidden>
+    <div class="bouquet-shell">
+      <p class="bouquet-eyebrow">A LITTLE GIFT, JUST FOR YOU</p>
+      <h1>Flowers for Fara ♡</h1>
+      <p class="bouquet-intro">Every flower has a meaning. Pick five flowers to create your own little bouquet.</p>
+      <div id="bouquetCapture" class="bouquet-capture">
+        <div class="bouquet-stars">✦ &nbsp; ♡ &nbsp; ✦</div>
+        <h2>Made with love, by Fara</h2>
+        <div class="bouquet-art" role="img" aria-label="Your hand-picked bouquet">
+          <div class="bouquet-greenery" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 335" preserveAspectRatio="none"><path d="M185.2 275 Q103.2 205.0 47.9 135.0" stroke="#47775e" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M133.5 228.3 Q128.7 211.1 114.0 214.0 Q116.8 231.5 133.5 228.3Z" fill="#91bc93"/><path d="M109.9 205.0 Q115.8 191.6 133.3 193.8 Q130.1 207.5 109.9 205.0Z" fill="#7eaf89"/><path d="M87.8 181.7 Q83.6 165.5 70.9 168.2 Q73.3 184.6 87.8 181.7Z" fill="#7eaf89"/><path d="M175.0 275 Q96.1 199.1 48.1 123.2" stroke="#47775e" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M125.8 224.4 Q130.7 203.7 145.4 207.1 Q142.7 228.2 125.8 224.4Z" fill="#91bc93"/><path d="M103.8 199.1 Q97.8 181.0 79.7 184.0 Q83.0 202.4 103.8 199.1Z" fill="#91bc93"/><path d="M83.5 173.8 Q89.1 150.2 105.6 154.1 Q102.5 178.1 83.5 173.8Z" fill="#598b6d"/><path d="M187.2 275 Q119.7 193.2 66.1 111.4" stroke="#6b9b75" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M143.7 220.5 Q139.9 204.1 128.6 206.8 Q130.7 223.5 143.7 220.5Z" fill="#a0c49b"/><path d="M123.2 193.2 Q128.6 177.2 144.8 179.8 Q141.8 196.2 123.2 193.2Z" fill="#91bc93"/><path d="M103.4 166.0 Q99.3 153.8 87.0 155.8 Q89.3 168.2 103.4 166.0Z" fill="#598b6d"/><path d="M177.1 275 Q114.8 176.7 79.2 78.4" stroke="#6b9b75" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M138.6 209.5 Q143.9 186.3 159.9 190.2 Q157.0 213.7 138.6 209.5Z" fill="#598b6d"/><path d="M121.5 176.7 Q115.3 162.4 96.8 164.8 Q100.3 179.4 121.5 176.7Z" fill="#598b6d"/><path d="M105.9 144.0 Q112.3 126.6 131.6 129.5 Q128.0 147.2 105.9 144.0Z" fill="#a0c49b"/><path d="M164.8 275 Q136.0 164.0 89.1 53.1" stroke="#47775e" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M143.6 201.0 Q139.3 183.6 126.5 186.5 Q128.9 204.2 143.6 201.0Z" fill="#6b9e7d"/><path d="M131.5 164.0 Q135.3 148.9 146.8 151.4 Q144.6 166.8 131.5 164.0Z" fill="#a0c49b"/><path d="M118.4 127.0 Q111.7 116.6 91.7 118.4 Q95.4 129.0 118.4 127.0Z" fill="#a0c49b"/><path d="M167.9 275 Q117.6 166.9 98.5 58.8" stroke="#557f65" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M137.8 202.9 Q144.4 185.6 164.2 188.5 Q160.5 206.1 137.8 202.9Z" fill="#a0c49b"/><path d="M125.4 166.9 Q119.5 152.3 101.7 154.7 Q105.0 169.6 125.4 166.9Z" fill="#a0c49b"/><path d="M114.7 130.8 Q119.8 120.7 135.1 122.4 Q132.2 132.7 114.7 130.8Z" fill="#598b6d"/><path d="M186.3 275 Q163.1 161.0 111.1 47.1" stroke="#557f65" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M167.6 199.0 Q163.8 181.8 152.3 184.7 Q154.4 202.2 167.6 199.0Z" fill="#91bc93"/><path d="M155.9 161.0 Q161.6 143.4 178.9 146.3 Q175.7 164.3 155.9 161.0Z" fill="#91bc93"/><path d="M142.6 123.0 Q138.3 107.4 125.3 110.0 Q127.7 125.9 142.6 123.0Z" fill="#7eaf89"/><path d="M185.2 275 Q163.9 168.1 122.4 61.2" stroke="#47775e" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M168.7 203.7 Q174.9 193.1 193.3 194.9 Q189.8 205.7 168.7 203.7Z" fill="#91bc93"/><path d="M158.8 168.1 Q153.6 152.4 137.7 155.0 Q140.7 171.0 158.8 168.1Z" fill="#598b6d"/><path d="M147.8 132.5 Q153.8 114.9 171.8 117.8 Q168.5 135.7 147.8 132.5Z" fill="#6b9e7d"/><path d="M162.7 275 Q134.0 165.3 128.5 55.6" stroke="#47775e" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M146.1 201.9 Q139.9 188.7 121.3 190.9 Q124.8 204.3 146.1 201.9Z" fill="#7eaf89"/><path d="M139.8 165.3 Q144.4 145.8 158.2 149.1 Q155.6 168.9 139.8 165.3Z" fill="#7eaf89"/><path d="M134.8 128.8 Q130.5 111.1 117.7 114.0 Q120.1 132.0 134.8 128.8Z" fill="#a0c49b"/><path d="M169.1 275 Q154.7 199.4 150.6 123.9" stroke="#557f65" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M160.6 224.6 Q166.5 209.2 184.4 211.8 Q181.0 227.4 160.6 224.6Z" fill="#7eaf89"/><path d="M157.2 199.4 Q153.2 183.4 141.0 186.0 Q143.3 202.4 157.2 199.4Z" fill="#a0c49b"/><path d="M154.5 174.2 Q161.1 158.6 180.9 161.2 Q177.2 177.1 154.5 174.2Z" fill="#598b6d"/><path d="M176.0 275 Q168.7 192.4 157.7 109.8" stroke="#47775e" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M170.7 219.9 Q166.2 197.4 152.8 201.2 Q155.3 224.1 170.7 219.9Z" fill="#7eaf89"/><path d="M167.8 192.4 Q172.0 181.9 184.7 183.7 Q182.3 194.3 167.8 192.4Z" fill="#a0c49b"/><path d="M164.6 164.9 Q159.9 155.0 145.7 156.7 Q148.4 166.7 164.6 164.9Z" fill="#a0c49b"/><path d="M170.3 275 Q165.9 165.6 171.1 56.3" stroke="#6b9b75" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M168.4 202.1 Q175.0 187.6 194.9 190.0 Q191.2 204.8 168.4 202.1Z" fill="#a0c49b"/><path d="M168.3 165.6 Q164.6 143.3 153.7 147.0 Q155.8 169.7 168.3 165.6Z" fill="#a0c49b"/><path d="M168.7 129.2 Q174.6 106.9 192.5 110.6 Q189.2 133.3 168.7 129.2Z" fill="#6b9e7d"/><path d="M167.6 275 Q165.3 155.8 178.1 36.6" stroke="#557f65" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M167.8 195.5 Q163.1 177.0 148.9 180.1 Q151.6 198.9 167.8 195.5Z" fill="#7eaf89"/><path d="M169.1 155.8 Q173.5 135.1 186.7 138.6 Q184.2 159.6 169.1 155.8Z" fill="#7eaf89"/><path d="M171.3 116.1 Q165.0 102.8 146.1 105.0 Q149.6 118.5 171.3 116.1Z" fill="#7eaf89"/><path d="M178.5 275 Q169.2 199.2 189.3 123.3" stroke="#557f65" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M175.6 224.4 Q179.7 206.7 192.2 209.7 Q189.9 227.7 175.6 224.4Z" fill="#6b9e7d"/><path d="M176.6 199.2 Q170.3 188.3 151.7 190.1 Q155.2 201.2 176.6 199.2Z" fill="#6b9e7d"/><path d="M179.2 173.9 Q184.0 154.5 198.3 157.7 Q195.6 177.4 179.2 173.9Z" fill="#598b6d"/><path d="M180.1 275 Q199.0 181.8 211.2 88.6" stroke="#557f65" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M192.0 212.9 Q185.5 200.6 166.1 202.7 Q169.7 215.1 192.0 212.9Z" fill="#7eaf89"/><path d="M197.3 181.8 Q201.3 162.4 213.1 165.6 Q210.9 185.4 197.3 181.8Z" fill="#598b6d"/><path d="M202.3 150.7 Q197.3 130.9 182.2 134.2 Q185.1 154.4 202.3 150.7Z" fill="#6b9e7d"/><path d="M163.1 275 Q199.9 161.3 220.1 47.6" stroke="#557f65" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M185.8 199.2 Q189.4 184.6 200.2 187.0 Q198.2 201.9 185.8 199.2Z" fill="#91bc93"/><path d="M195.8 161.3 Q189.5 148.7 170.6 150.8 Q174.2 163.6 195.8 161.3Z" fill="#a0c49b"/><path d="M204.8 123.4 Q211.5 102.9 231.7 106.3 Q228.0 127.2 204.8 123.4Z" fill="#91bc93"/><path d="M173.3 275 Q196.3 193.2 228.1 111.3" stroke="#47775e" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M189.6 220.4 Q183.7 197.5 165.9 201.3 Q169.2 224.6 189.6 220.4Z" fill="#598b6d"/><path d="M198.5 193.2 Q203.5 174.1 218.4 177.2 Q215.6 196.7 198.5 193.2Z" fill="#91bc93"/><path d="M207.9 165.9 Q203.2 142.1 189.2 146.1 Q191.8 170.2 207.9 165.9Z" fill="#598b6d"/><path d="M172.3 275 Q215.2 153.4 243.8 31.8" stroke="#47775e" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M199.3 193.9 Q203.3 179.8 215.4 182.2 Q213.2 196.5 199.3 193.9Z" fill="#a0c49b"/><path d="M211.6 153.4 Q207.9 139.3 196.9 141.6 Q198.9 156.0 211.6 153.4Z" fill="#a0c49b"/><path d="M223.2 112.9 Q228.2 101.0 243.3 103.0 Q240.5 115.1 223.2 112.9Z" fill="#a0c49b"/><path d="M162.9 275 Q199.4 197.8 248.9 120.6" stroke="#557f65" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M188.7 223.5 Q182.5 205.7 164.0 208.6 Q167.5 226.8 188.7 223.5Z" fill="#7eaf89"/><path d="M202.7 197.8 Q207.9 179.3 223.6 182.3 Q220.7 201.2 202.7 197.8Z" fill="#a0c49b"/><path d="M217.4 172.1 Q211.2 159.9 192.8 161.9 Q196.2 174.3 217.4 172.1Z" fill="#a0c49b"/><path d="M173.2 275 Q207.2 183.6 269.1 92.1" stroke="#557f65" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M199.0 214.0 Q204.5 200.8 221.2 203.0 Q218.1 216.5 199.0 214.0Z" fill="#7eaf89"/><path d="M214.2 183.6 Q209.3 168.9 194.7 171.4 Q197.4 186.2 214.2 183.6Z" fill="#598b6d"/><path d="M230.9 153.1 Q236.8 141.4 254.3 143.4 Q251.0 155.2 230.9 153.1Z" fill="#7eaf89"/><path d="M174.1 275 Q233.8 198.4 277.5 121.7" stroke="#557f65" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M212.1 223.9 Q207.1 212.2 192.0 214.2 Q194.8 226.1 212.1 223.9Z" fill="#598b6d"/><path d="M229.8 198.4 Q233.7 188.5 245.3 190.1 Q243.2 200.2 229.8 198.4Z" fill="#6b9e7d"/><path d="M246.6 172.8 Q241.1 155.6 224.7 158.4 Q227.8 176.0 246.6 172.8Z" fill="#91bc93"/><path d="M170.1 275 Q236.8 189.5 290.5 103.9" stroke="#6b9b75" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M213.2 218.0 Q219.6 194.9 239.0 198.7 Q235.4 222.2 213.2 218.0Z" fill="#6b9e7d"/><path d="M233.6 189.5 Q229.1 166.0 215.7 169.9 Q218.2 193.8 233.6 189.5Z" fill="#7eaf89"/><path d="M253.3 161.0 Q257.5 141.7 270.2 144.9 Q267.8 164.5 253.3 161.0Z" fill="#6b9e7d"/><path d="M186.6 275 Q244.8 184.9 292.3 94.9" stroke="#557f65" stroke-width="3.5" fill="none" stroke-linecap="round"/><path d="M224.2 215.0 Q217.7 191.4 198.3 195.3 Q201.9 219.3 224.2 215.0Z" fill="#7eaf89"/><path d="M242.2 184.9 Q248.8 166.9 268.6 169.9 Q264.9 188.2 242.2 184.9Z" fill="#7eaf89"/><path d="M259.5 154.9 Q252.9 144.8 233.0 146.5 Q236.7 156.8 259.5 154.9Z" fill="#a0c49b"/><path d="M175.3 275 Q238.0 182.1 315.2 89.3" stroke="#47775e" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M218.7 213.1 Q225.4 194.2 245.6 197.3 Q241.8 216.6 218.7 213.1Z" fill="#91bc93"/><path d="M241.6 182.1 Q235.1 163.0 215.6 166.2 Q219.3 185.7 241.6 182.1Z" fill="#7eaf89"/><path d="M265.3 151.2 Q271.0 139.7 287.9 141.6 Q284.7 153.3 265.3 151.2Z" fill="#91bc93"/><circle cx="172.6" cy="145.8" r="3.8" fill="#fff4ec" opacity=".88"/><circle cx="256.3" cy="149.0" r="3.1" fill="#eac9d9" opacity=".88"/><circle cx="155.0" cy="48.5" r="2.0" fill="#f9e8ef" opacity=".88"/><circle cx="253.0" cy="91.9" r="3.2" fill="#eac9d9" opacity=".88"/><circle cx="190.6" cy="179.6" r="2.0" fill="#fff4ec" opacity=".88"/><circle cx="66.4" cy="88.0" r="3.3" fill="#eac9d9" opacity=".88"/><circle cx="54.0" cy="65.5" r="2.6" fill="#f9e8ef" opacity=".88"/><circle cx="82.3" cy="61.7" r="3.2" fill="#f9e8ef" opacity=".88"/><circle cx="205.2" cy="102.3" r="3.0" fill="#f9e8ef" opacity=".88"/><circle cx="181.3" cy="117.7" r="3.2" fill="#f9e8ef" opacity=".88"/><circle cx="264.0" cy="79.5" r="3.2" fill="#eac9d9" opacity=".88"/><circle cx="232.4" cy="176.2" r="3.8" fill="#f9e8ef" opacity=".88"/><circle cx="75.1" cy="102.7" r="2.1" fill="#eac9d9" opacity=".88"/><circle cx="175.7" cy="180.7" r="3.5" fill="#f9e8ef" opacity=".88"/><circle cx="230.6" cy="62.8" r="3.3" fill="#fff4ec" opacity=".88"/><circle cx="164.9" cy="64.5" r="3.1" fill="#f9e8ef" opacity=".88"/><circle cx="132.5" cy="121.5" r="3.9" fill="#f9e8ef" opacity=".88"/><circle cx="247.5" cy="145.8" r="2.3" fill="#eac9d9" opacity=".88"/><circle cx="142.3" cy="46.4" r="2.1" fill="#f9e8ef" opacity=".88"/><circle cx="87.6" cy="167.5" r="2.7" fill="#f9e8ef" opacity=".88"/><circle cx="166.2" cy="151.9" r="2.7" fill="#f9e8ef" opacity=".88"/><circle cx="254.3" cy="170.4" r="3.6" fill="#f9e8ef" opacity=".88"/><circle cx="150.4" cy="136.0" r="2.8" fill="#eac9d9" opacity=".88"/><circle cx="49.4" cy="121.7" r="3.3" fill="#f9e8ef" opacity=".88"/><circle cx="51.2" cy="163.0" r="3.6" fill="#eac9d9" opacity=".88"/><circle cx="83.3" cy="162.0" r="3.3" fill="#eac9d9" opacity=".88"/><circle cx="208.5" cy="177.9" r="3.9" fill="#eac9d9" opacity=".88"/><circle cx="292.5" cy="140.7" r="2.8" fill="#f9e8ef" opacity=".88"/><circle cx="183.3" cy="115.7" r="3.9" fill="#eac9d9" opacity=".88"/><circle cx="256.8" cy="122.3" r="3.3" fill="#eac9d9" opacity=".88"/><circle cx="149.5" cy="146.3" r="3.2" fill="#fff4ec" opacity=".88"/><circle cx="234.2" cy="144.5" r="3.6" fill="#fff4ec" opacity=".88"/><circle cx="250.4" cy="119.4" r="3.8" fill="#fff4ec" opacity=".88"/><circle cx="136.6" cy="172.6" r="3.6" fill="#eac9d9" opacity=".88"/></svg></div>
+          <div class="bouquet-stems" id="bouquetFlowers"></div>
+          <div class="bouquet-filler" aria-hidden="true"></div>
+          <div class="bouquet-paper bouquet-paper-left"></div>
+          <div class="bouquet-paper bouquet-paper-right"></div>
+          <div class="bouquet-ribbon"><span>♡</span></div>
+          <div id="bouquetPolaroid" class="bouquet-polaroid" hidden><img id="bouquetPolaroidImage" alt="Chosen memory"><span>A little piece of us ♡</span></div>
+        </div>
+        <p class="bouquet-art-caption">A little bunch of happiness, just for you. ♡</p>
+      </div>
+      <p id="bouquetCount" class="bouquet-count" aria-live="polite">0 / 5 flowers picked</p>
+      <div id="bouquetControls">
+        <p class="bouquet-pick-label">Choose your flowers</p>
+        <div class="bouquet-options">
+          <button type="button" onclick="showFlowerMeaning('rose')"><span>🌹</span><small>Rose</small></button>
+          <button type="button" onclick="showFlowerMeaning('tulip')"><span>🌷</span><small>Tulip</small></button>
+          <button type="button" onclick="showFlowerMeaning('sunflower')"><span>🌻</span><small>Sunflower</small></button>
+          <button type="button" onclick="showFlowerMeaning('blossom')"><span>🌸</span><small>Blossom</small></button>
+          <button type="button" onclick="showFlowerMeaning('daisy')"><span>🌼</span><small>Daisy</small></button>
+          <button type="button" onclick="showFlowerMeaning('lavender')"><span>🪻</span><small>Lavender</small></button>
+        </div>
+        <div id="flowerMeaningCard" class="flower-meaning-card" hidden>
+          <div id="flowerMeaningEmoji" class="flower-meaning-emoji"></div>
+          <h2 id="flowerMeaningTitle"></h2><p id="flowerMeaningText"></p>
+          <p id="flowerLoveNote" class="flower-love-note"></p>
+          <button type="button" onclick="confirmFlower()">Add to My Bouquet ♡</button>
+        </div>
+        <button type="button" class="bouquet-reset" onclick="resetBouquet()">Start Again ↺</button>
+      </div>
+      <div id="bouquetComplete" class="bouquet-complete" hidden>
+        <h2>Made by you, cherished by me ♡</h2>
+        <p>Your bouquet is as special as you are.</p>
+        <button type="button" id="chooseMemoryButton" onclick="openBouquetMemories()">Add Our Little Memory 📸</button>
+        <div id="bouquetMemoryPicker" class="bouquet-memory-picker" hidden>
+          <p>Choose your favourite memory ♡</p>
+          <div id="bouquetMemoryGrid" class="bouquet-memory-grid"></div>
+          <button type="button" class="bouquet-memory-close" onclick="closeBouquetMemories()">Close ✕</button>
+        </div>
+        <button id="bouquetPhotoButton" type="button" onclick="toggleBouquetPhoto()">Show My Bouquet 📸</button>
+        <p class="bouquet-screenshot">📸 Please screenshot your bouquet and send it to me, sayang! 💗</p>
+        <p>There's one last thing I want you to know...</p>
+        <button type="button" onclick="goToLetter()">One Last Letter For You 💌</button>
+      </div>
+    </div>
+  </section>
+  <!-- PAGE 5: BIRTHDAY LETTER -->
+  <section id="letterPage" class="letter-page" hidden>
+    <h1>A Little Letter For You 💌</h1><p>I have something to tell you, Fara...</p>
+    <div id="envelope" class="envelope" onclick="openLetter()"><div class="envelope-flap"></div><div class="envelope-body"></div><div class="envelope-heart">♥</div></div>
+    <p id="tapLetter">Tap the envelope to open ♡</p>
+    <div id="birthdayLetter" class="birthday-letter finale-letter" hidden>
+      <p class="finale-intro finale-reveal">There's something I've been wanting to tell you...</p>
+      <h2 class="finale-reveal">To My Dearest Fara, 💗</h2>
+      <!-- Edit the paragraphs below with your own birthday letter. -->
+      <p class="finale-reveal">Happy Birthday, sayang!</p>
+      <p class="finale-reveal">I hope today brings you as much happiness as you bring into my life.</p>
+      <p class="finale-reveal">Thank you for appreciating the little things I do and for making our moments together so special.</p>
+      <p class="finale-reveal">I may not be able to give you everything in this world, but I hope I can always make you feel loved, appreciated, and cared for.</p>
+      <p class="finale-reveal">Made with love, just to see you smile.</p>
+      <p class="letter-signature finale-reveal">With all my love, Aiman ♡</p>
+      <div class="finale-extra finale-reveal">
+        <button type="button" id="oneMoreThingButton" onclick="showFinalSurprise()">One More Thing... 💗</button>
+        <div id="finalSurprise" class="finale-surprise" hidden>
+          <span class="finale-big-heart" aria-hidden="true">💗</span>
+          <h3>A Little Message From Me 🎥</h3>
+          <p>Just one more thing I want you to hear, sayang... ♡</p>
+          <div class="finale-video-frame">
+            <!-- Tomorrow: replace only video/love-message.mp4 with your recording. -->
+            <video id="loveMessageVideo" controls playsinline preload="metadata" aria-label="A special video message for Fara">
+              <source src="video/love-message.mp4" type="video/mp4">
+              Your browser does not support video playback.
+            </video>
+          </div>
+          <p id="videoEnding" class="finale-video-ending" hidden>And I'll keep choosing you, every single day. ♡</p>
+          <p class="finale-small">Made just for you, with love. ♡</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
