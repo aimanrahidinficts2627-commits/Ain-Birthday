@@ -91,57 +91,57 @@ function goToMemories() {
 
 const memories = [
   {
-    image: "images/memory1.jpeg",
+    image: "Images/memory1.jpeg",
     title: "Our First Memory ♡",
     description: "One of my favourite moments with you."
   },
   {
-    image: "images/memory2.jpeg",
+    image: "Images/memory2.jpeg",
     title: "Our Happy Days ♡",
     description: "Every little moment with you makes me smile."
   },
   {
-    image: "images/memory3.jpeg",
+    image: "Images/memory3.jpeg",
     title: "My Favourite Person ♡",
     description: "I'm so lucky to have you in my life."
   },
   {
-    image: "images/memory4.jpeg",
+    image: "Images/memory4.jpeg",
     title: "Our Silly Moments ♡",
     description: "I love how we can laugh about anything together."
   },
   {
-    image: "images/memory5.jpeg",
+    image: "Images/memory5.jpeg",
     title: "Always You ♡",
     description: "No matter what, you'll always be special to me."
   },
   {
-    image: "images/memory6.jpeg",
+    image: "Images/memory6.jpeg",
     title: "Our Memory 6 ♡",
     description: "A little moment worth remembering."
   },
   {
-    image: "images/memory7.jpeg",
+    image: "Images/memory7.jpeg",
     title: "Our Memory 7 ♡",
     description: "Another beautiful day with you."
   },
   {
-    image: "images/memory8.jpeg",
+    image: "Images/memory8.jpeg",
     title: "Our Memory 8 ♡",
     description: "One of my favourite memories."
   },
   {
-    image: "images/memory9.jpeg",
+    image: "Images/memory9.jpeg",
     title: "Our Memory 9 ♡",
     description: "A moment that made me smile."
   },
   {
-    image: "images/memory10.jpeg",
+    image: "Images/memory10.jpeg",
     title: "Our Memory 10 ♡",
     description: "I'm glad we shared this moment."
   },
   {
-    image: "images/memory11.jpeg",
+    image: "Images/memory11.jpeg",
     title: "Our Memory 11 ♡",
     date: "2 November 2026",
     description: "Here's to many more memories together."
