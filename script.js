@@ -93,58 +93,68 @@ const memories = [
   {
     image: "Images/memory1.jpeg",
     title: "Our First Memory ♡",
-    description: "One of my favourite moments with you."
+    date: "10 September 2026",
+    description: "First time kita tatap muka after in relay, masing ii malu."
   },
   {
     image: "Images/memory2.jpeg",
-    title: "Our Happy Days ♡",
-    description: "Every little moment with you makes me smile."
+    title: "Our Sec Official Meet ♡",
+    date: "3 October 2026",
+    description: "First time memang memasing nak jumpa, time ni kita decide nak jalan ii tengok pemandangan pastu naik bukit."
   },
   {
     image: "Images/memory3.jpeg",
-    title: "My Favourite Person ♡",
-    description: "I'm so lucky to have you in my life."
+    title: "Our Badminton Date ♡",
+    date: "11 October 2026",
+    description: "Main badminton happy sangat even cuaca berangin tapi still kita selesa dan happy."
   },
   {
     image: "Images/memory4.jpeg",
-    title: "Our Silly Moments ♡",
-    description: "I love how we can laugh about anything together."
+    title: "Our First Photobooth ♡",
+    date: "24 October 2026",
+    description: "Dah lama teringin tahu ii Ain ajak suka sangat moment ni, lepasni kita photobooth banyak ii aw."
   },
   {
     image: "Images/memory5.jpeg",
-    title: "Always You ♡",
-    description: "No matter what, you'll always be special to me."
+    title: "Our cute pink outfit!! ♡",
+    date: "24 October 2026",
+    description: "Comel kita dedua cam pasangan baru kahwin HEHEHE cute, selalu tak move on."
   },
   {
     image: "Images/memory6.jpeg",
-    title: "Our Memory 6 ♡",
-    description: "A little moment worth remembering."
+    title: "Always You ♡",
+    date: "24 October 2026",
+    description: "Saya nak awak tahu saya sentiasa sayang awak, HEHE saya akan ambik gambau awak senyap ii thats my hobi sekang."
   },
   {
     image: "Images/memory7.jpeg",
-    title: "Our Memory 7 ♡",
-    description: "Another beautiful day with you."
+    title: "ENCORE!!!! ♡",
+    date: "24 October 2026",
+    description: "Hari ni adalah hari bahagia saya sepanjang hari saya happy, even ada gangguan tapi still happy that day HAHA."
   },
   {
     image: "Images/memory8.jpeg",
-    title: "Our Memory 8 ♡",
-    description: "One of my favourite memories."
+    title: "HEHEHE PANTAI!!! ♡",
+    date: "24 October 2026",
+    description: "Saya selalu nak gi pantai ngan awak akhirnya tercapai that time pasni kita gi pantai agi nak picnis HEHEHE or lepak ii."
   },
   {
     image: "Images/memory9.jpeg",
-    title: "Our Memory 9 ♡",
-    description: "A moment that made me smile."
+    title: "HARI BARAI ♡",
+    date: "30 October 2026",
+    description: "Time ni kita dedua barai tapi still, im happy saya sngt memerlukan awak time ni and sangat membantu, saya selalu nak snap photo ngan awak kat FTMK HEHE."
   },
   {
     image: "Images/memory10.jpeg",
-    title: "Our Memory 10 ♡",
-    description: "I'm glad we shared this moment."
+    title: "Yeayy Hantar Fara ♡",
+    date: "7 November 2026",
+    description: "Saya selalu bercampur aduk ngan harini, saya happy sebab kita gi Taman tapi rasa bersalah sebab awak sakit hrmm, tapi still akhirnya dapat hantar Ainnnn HEHE."
   },
   {
     image: "Images/memory11.jpeg",
-    title: "Our Memory 11 ♡",
+    title: "My Best Day ♡",
     date: "2 November 2026",
-    description: "Here's to many more memories together."
+    description: "Saya seronok time ni HAHAHA saya dapat kasi awak bunga, awak happy sampai nangis, saya nak awak tahu saya sangat hargai awak, selalu pikir caner nak wat awak tersenyum thanks sebab muncul dalam hidup saya."
   }
 ];
 
